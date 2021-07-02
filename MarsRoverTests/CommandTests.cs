@@ -32,13 +32,15 @@ namespace MarsRoverTests
         public void ConstructorSetsInitialNewPositionValue()
         {
             Command newCommand = new Command("MOVE", 20);
-            Assert.AreEqual(newCommand.NewPostion, 20);
+            Assert.AreEqual(newCommand.NewPosition, 20);
         }
 
+        //4) Test is responsible for checking that the 3rd field on the Command Class, NewMode is set by a Command Constructor
         [TestMethod]
         public void ConstructorSetsInitialNewModeValue()
         {
-
+            Command newCommand = new Command("MOVE", 0, "FULLY OPERATIONAL");
+            Assert.AreEqual(newCommand.NewMode, "FULLY OPERATIONAL");
         }
 
     }
