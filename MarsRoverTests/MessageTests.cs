@@ -23,6 +23,23 @@ namespace MarsRoverTests
             }
         }
         
+        //6) Test confirms that the Constructor in Message class correctly sets the Name property in a new message object
+        [TestMethod]
+        public void ConstructorSetsName()
+        {
+            Message newName = new Message("", commands);
+            Assert.AreEqual(newName.Name, "");
+        }
 
+        //7) Test confirms that the Commands property of a new message object contains data passed in from the Message(name, commands) call
+
+        [TestMethod]
+        public void ConstructorSetsCommandsField()
+        {
+            Message newMessage = new Message("foo", commands);
+            Assert.AreEqual(commands, newMessage.Commands);
+        }
+
+        
     }
 }
