@@ -15,6 +15,11 @@ namespace MarsRover
             GeneratorWatts = 110;
         }
 
+        public Rover()
+        {
+        
+        }
+
         //Method ReceiveMessage handles updates to the Rover's properties (MOVE and MODE_CHANGE)
         public void ReceiveMessage(Message message)
         {
@@ -35,9 +40,9 @@ namespace MarsRover
                     Mode = message.Commands[i].NewMode;
                 }
 
-                else if (commandType != "MOVE" || commandType != "MODE_CHANGE")
+                else if (commandType != "MOVE" && commandType != "MODE_CHANGE")
                 {
-                    throw new ArgumentException("Please enter a valid command.");
+                   throw new ArgumentException("Please enter a valid command.");
                 }
             }
         }
