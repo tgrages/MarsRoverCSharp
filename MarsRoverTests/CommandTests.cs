@@ -39,8 +39,8 @@ namespace MarsRoverTests
         [TestMethod]
         public void ConstructorSetsInitialNewModeValue()
         {
-            Command newCommand = new Command("MOVE", 0, "FULLY OPERATIONAL");
-            Assert.AreEqual(newCommand.NewMode, "FULLY OPERATIONAL");
+            Command newCommand = new Command("MOVE", 0, "NORMAL");
+            Assert.AreEqual(newCommand.NewMode, "NORMAL");
         }
 
     }

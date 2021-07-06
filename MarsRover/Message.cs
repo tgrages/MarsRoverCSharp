@@ -15,14 +15,14 @@ namespace MarsRover
         //    }            
         //}
 
-		public Message(string newName)
-		{
-			Name = newName;
-			if (String.IsNullOrEmpty(Name))
-			{
-				throw new ArgumentNullException(Name, "Name required.");
-			}			
-		}
+		//public Message(string newName)
+		//{
+		//	Name = newName;
+		//	if (String.IsNullOrEmpty(Name))
+		//	{
+		//		throw new ArgumentNullException(Name, "Name required.");
+		//	}			
+		//}
 
         public Message(string name, Command[] commands)
         {
