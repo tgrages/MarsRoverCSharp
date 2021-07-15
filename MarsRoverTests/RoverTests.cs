@@ -36,32 +36,39 @@ namespace MarsRoverTests
         [TestMethod]
         public void RespondsCorrectlyToModeChangeCommand()
         {
-            Command[] commands = { new Command("MODE_CHANGE", "NORMAL") };
+            Command[] commands = 
+            { 
+                new Command("MODE_CHANGE", "NORMAL"),
+                new Command("MODE_CHANGE", "LOW_POWER")
+            };
             Message newMessage = new Message("UPDATE 1", commands);
             Rover newRover = new Rover();
             newRover.ReceiveMessage(newMessage);
-            Assert.AreEqual(newRover.Mode, "NORMAL");
+            Assert.AreEqual(newRover.Mode, commands[commands.Length-1].NewMode);
         }
 
         //12) Test to confirm that the rover position does not change when sent a "MOVE" command in "LOW_POWER" mode."
         [TestMethod]
         public void DoesNotMoveInLowPower()
         {
-            Command[] commands = { new Command("MODE_CHANGE", "LOW_POWER"), new Command("MOVE", 5) };
+            Command[] commands = { new Command("MOVE", "LOW_POWER") };
             Message newMessage = new Message("UPDATE 1", commands);
-            Rover newRover = new Rover();
+            Rover newRover = new Rover(0);
+
             newRover.ReceiveMessage(newMessage);
-            Assert.AreEqual(newRover.Mode, "LOW_POWER");
+
+            Assert.AreEqual(newRover.Position, 0);
         }
 
         //13) Test to confirm a MOVE command will update the rover's position with the position value in the command
         [TestMethod]
         public void PositionChangesFromMoveCommand()
         {
-            Command[] commands = { new Command("MOVE", 0) };
+            Command[] commands = { new Command("MODE_CHANGE", "LOW_POWER"), new Command("MOVE", 5) };
             Message newMessage = new Message("UPDATE 1", commands);
-            Rover newRover = new Rover(200);
-            Assert.AreEqual(newRover.Position, 200);
+            Rover newRover = new Rover();
+            newRover.ReceiveMessage(newMessage);
+            Assert.AreEqual(newRover.Position, 5);           
         }
     }
 }

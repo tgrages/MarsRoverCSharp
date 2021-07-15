@@ -10,9 +10,9 @@ namespace MarsRover
         public Rover(int position)
         {
             //a position is a number representing the rover's position
-            Position = position;
-            Mode = "NORMAL";
-            GeneratorWatts = 110;
+            this.Position = position;
+            this.Mode = "NORMAL";
+            this.GeneratorWatts = 110;
         }
 
         public Rover()
@@ -29,15 +29,15 @@ namespace MarsRover
 
                 if (commandType == "MOVE")
                 {
-                    if (Mode != "LOW_POWER")
+                    if (this.Mode != "LOW_POWER")
                     {
-                        Position = message.Commands[i].NewPosition;
+                        this.Position = message.Commands[i].NewPosition;
                     }
                 }
 
                 if (commandType == "MODE_CHANGE")
                 {
-                    Mode = message.Commands[i].NewMode;
+                    this.Mode = message.Commands[i].NewMode;
                 }
 
                 else if (commandType != "MOVE" && commandType != "MODE_CHANGE")
@@ -49,7 +49,7 @@ namespace MarsRover
 
         public override string ToString()
         {
-            return "Position: " + Position + " - Mode: " + Mode + " - GeneratorWatts: " + GeneratorWatts; 
+            return "Position: " + this.Position + " - Mode: " + this.Mode + " - GeneratorWatts: " + this.GeneratorWatts; 
         }
 
     }
